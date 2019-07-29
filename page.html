@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link href="zui/css/layui.css" rel="stylesheet">
+	<link href="zui/css/zui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="zui/css/main.css">
+    <link rel="stylesheet" href="zui/css/main-color.css">
+    <link rel="stylesheet" href="Zui/lib/prism/prism.css">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <style>
+.input-control-label-left{margin: 10px 15px;}
+.center{text-align: center;}
+.manage_group{position: absolute;right: 15px;z-index: 1;display: none;}
+.module_group{display: none;}
+
+.layui-input-block{margin-left: 80px;}
+    </style>
+
+
+</head>
+<body>
+	<form class="drag_box_form fill layui-form ui-droppable ui-sortable">
+		<div class="btn-group manage_group">
+			<button class="btn btn-danger danger_grid"><span class="icon icon-trash"></span> 删除</button>
+		</div>
+		<div class="col-md-12 column">
+			<div class="inp_position ui-droppable ui-sortable">
+				<div class="module">
+					<div class="btn-group module_group">
+						<button class="btn btn-danger danger_module"><span class="icon icon-trash"></span> 删除</button>
+					</div>
+					<div class="input-control has-label-left list-group-item">
+						<input id="input1" type="text" class="form-control input1" placeholder="请输入" /><label for="input1" class="input-control-label-left">用户名:</label>
+					</div>
+				</div>
+				<div class="module">
+					<div class="btn-group module_group">
+						<button class="btn btn-danger danger_module"><span class="icon icon-trash"></span> 删除</button>
+					</div>
+					<div class="input-control has-label-left list-group-item">
+						<input id="input2" type="text" class="form-control input2" placeholder="请输入" /><label for="input2" class="input-control-label-left">密码:</label>
+					</div>
+				</div>
+				<div class="module">
+					<div class="btn-group module_group">
+						<button class="btn btn-danger danger_module"><span class="icon icon-trash"></span> 删除</button>
+					</div>
+					<div class="list-group-item">
+						<div class="layui-form-item select1">
+							<label class="layui-form-label select_submit layui-form-label1">爱好</label>
+							<div id="cat_ids1" class="cat_ids1">
+								<div>
+									<input name="cat_ids1" />
+								</div>
+								<div class="layui-input-inline">
+									 <select> <option>请选择</option> <option value="1">娱乐</option> <option value="6">篮球</option></select>
+									<div class="layui-form-select">
+										<div class="layui-select-title">
+											<input type="text" placeholder="请选择" class="layui-input" /><em class="layui-edge"></em>
+										</div>
+										<dl class="layui-anim layui-anim-upbit">
+											<dd class="layui-select-tips layui-this">
+												请选择
+											</dd>
+											<dd>
+												娱乐
+											</dd>
+											<dd>
+												篮球
+											</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="module">
+					<div class="btn-group module_group">
+						<button class="btn btn-danger danger_module"><span class="icon icon-trash"></span> 删除</button>
+					</div>
+					<div class="list-group-item">
+						<div class="layui-form-item checkbox1">
+							<label class="layui-form-label checkbox_submit layui-form-label1">技能</label>
+							<div class="layui-input-block tag_ids1 lay-ext-mulitsel" id="tag_ids1">
+								<div class="layui-unselect layui-form-select">
+									<div class="layui-select-title">
+										<input name="tag_ids1" type="text" class="layui-input layui-unselect" />
+									</div>
+									<div class="layui-input multiple">
+										<span class="tips">请选择 最多 5 个</span><em class="layui-edge"></em>
+									</div>
+									<dl class="layui-anim layui-anim-upbit">
+										<dd class="layui-select-tips">
+											请选择 最多 5 个
+										</dd>
+										<dd>
+											<div class="layui-unselect layui-form-checkbox">
+												<span>html</span><em class="layui-icon"></em>
+											</div>
+										</dd>
+										<dd>
+											<div class="layui-unselect layui-form-checkbox">
+												<span>css</span><em class="layui-icon"></em>
+											</div>
+										</dd>
+										<dd>
+											<div class="layui-unselect layui-form-checkbox">
+												<span>js</span><em class="layui-icon"></em>
+											</div>
+										</dd>
+										<dd>
+											<div class="layui-unselect layui-form-checkbox">
+												<span>java</span><em class="layui-icon"></em>
+											</div>
+										</dd>
+										<dd>
+											<div class="layui-unselect layui-form-checkbox">
+												<span>php</span><em class="layui-icon"></em>
+											</div>
+										</dd>
+										<dd>
+											<div class="layui-unselect layui-form-checkbox">
+												<span>vue</span><em class="layui-icon"></em>
+											</div>
+										</dd>
+										<dd>
+											<div class="layui-unselect layui-form-checkbox">
+												<span>react</span><em class="layui-icon"></em>
+											</div>
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+</body>
+<script src="zui/js/jquery.min.js"></script>
+<script src="zui/js/layui.js"></script>
+<script src="zui/js/zui.min.js"></script>
+<script src="zui/js/main.js"></script>
+<script src="Zui/lib/prism/prism.js"></script>
+<script src="Zui/lib/prism/jquery.htmlClean.js"></script>
+<script src="Zui/lib/sortable/zui.sortable.min.js"></script>
+<script>
+	$(document).ready(function(){
+		/*$(".has-label-left").attr("data-toggle","")
+		$(".has-label-left").attr("data-target","")
+		$(".yesnum").attr("onkeyup","(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)");
+		$(".yesnum").attr("onblur","this.v();");*/
+
+		$(".drag_box_form").append('<div class="center"><input class="btn btn-info" type="submit" value="提交"  style="margin: 20px;" /></div>')
+	})
+
+
+/*var ceshiData = [{"id":1,"name":"测试选项A","children":[{"id":2,"name":"A-1","children":[{"id":3,"name":"A-1-1"},{"id":4,"name":"A-1-2"}]},{"id":5,"name":"A-2"}]},{"id":6,"name":"测试选项B"}]
+*/
+/*var ceshiData = [{"id":1,"name":"测试选项A","children":[{"id":24,"name":"A-1","children":[{"id":7,"name":"A-1-1"},{"id":23,"name":"A-1-2"}]},{"id":5,"name":"A-2"}]},{"id":2,"name":"测试选项B"}]*/
+
+
+layui.config({
+    base : './'
+  }).extend({
+    selectN: './layui_extends/selectN',
+    selectM: './layui_extends/selectM',
+  })
+
+var texteara_cat1=[{"id":1,"name":"娱乐","children":[{"id":2,"name":"游戏","children":[{"id":3,"name":"和平精英"},{"id":4,"name":"王者荣耀"}]},{"id":5,"name":"球类"}]},{"id":6,"name":"篮球"}];var texteara_tag1=[{"id":1,"name":"html","status":0},{"id":2,"name":"css"},{"id":3,"name":"js"},{"id":4,"name":"java"},{"id":5,"name":"php"},{"id":6,"name":"vue"},{"id":7,"name":"react"}];
+
+var array_cat = [texteara_cat1];
+var array_tag = [texteara_tag1];
+
+
+	layui.use(['layer','form','jquery','selectN','selectM'],function(){
+    	$ = layui.jquery;	
+    	var form = layui.form
+    	,selectN = layui.selectN
+    	,selectM = layui.selectM;
+    	//无限级分类-基本配置
+    	var nums = array_cat.length;
+    	for (var i = 1; i <= nums; i++) {
+    		var catIns = 'catIns'+i
+    		catIns = selectN({
+	    		//元素容器【必填】
+	    		elem: '#cat_ids'+i
+	    		,search:[false,true]
+	    		//候选数据【必填】
+	    		,data: array_cat[i-1]
+	    	});
+	    
+    	}
+    	//多选标签-基本配置
+    	var tag_nums = array_tag.length;
+	    for (var i = 1; i <= tag_nums; i++) {
+	    	var nums = "tagIns"+i
+	    	var str = $(".tag_ids"+i+"").find(".tips").text()
+	    	str =  str.substring(str.indexOf("多") + 1,str.indexOf("个"))
+			var number = Number(str)
+      		nums = selectM({
+			    //元素容器【必填】
+			    elem: '#tag_ids'+i
+			    //候选数据【必填】
+			    ,data: array_tag[i-1]
+			    ,max: number			//最多选中个数，默认5
+			    ,field: {idName:'id',titleName:'name'}
+			    /*,width:400*/
+			    //添加验证
+			    ,verify:'required'
+			});
+  		}
+    
+  	});
+
+</script>
+</html>
+
+
