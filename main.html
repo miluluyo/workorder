@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可视化系统</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="zui/css/zui.min.css" rel="stylesheet">
+    <link href="zui/css/layui.css" rel="stylesheet">
+    <link rel="stylesheet" href="zui/css/main.css">
+    <link rel="stylesheet" href="zui/css/main-color.css">
+    <link rel="stylesheet" href="Zui/lib/prism/prism.css">
+    <link rel="stylesheet" href="Zui/lib/chosen/chosen.min.css">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+   	<link rel="shortcut icon" href="zui/css/main.ico" >
+    <!--IE8只能支持jQuery1.9-->
+	<!--[if lte IE 8]>
+	<script src="http://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+	<![endif]-->
+	<!--[if lt IE 9]>
+		<script src="jquery-1.9.0.js">
+	<![endif]-->
+
+     <!--[if lt IE 9]>
+	  <script src="dist/lib/ieonly/html5shiv.js"></script>
+	<![endif]-->
+	<!--[if lt IE 9]>
+	  <script src="dist/lib/ieonly/respond.js"></script>
+	<![endif]-->
+	<!--[if lt IE 9]>
+	  <script src="dist/lib/ieonly/excanvas.js"></script>
+	<![endif]-->
+</head>
+<body>
+<!--[if lt IE 8]>
+    <div class="alert alert-danger">您正在使用 <strong>过时的</strong> 浏览器. 是时候 <a href="http://browsehappy.com/">更换一个更好的浏览器</a> 来提升用户体验.</div>
+  <![endif]-->
+<div class="fill" id=""><!-- multiDroppableContainer -->
+	<div class="row fill">
+		<div class="col-md-12 column index_top row" style="height: 40px;">
+			<div class="top_logo_box" style=""><span class="icon icon-eye-open" style="font-size: 18px;"></span> 可视化系统</div>
+			<li style="width: 40px;display: inline-block;float: left;height: 100%;">
+				<span class="icon icon-align-justify nav_icon shrink"></span>
+			</li>
+			
+			<div style="float: left;margin-left: 20px" class="icon_group">
+				<!-- <div style="margin-right: 10px;display: inline-block;"> -->
+					<li class="desktop_code" style="float: left;cursor: pointer;">
+						<span class="icon icon-desktop nav_icon" style="display: inline-block;width: 25px;margin: 0 5px;padding-left: 0;padding-right: 0;text-align: center;"></span>
+					</li>
+					<li class="laptop_code" style="float: left;cursor: pointer;">
+						<span class="icon icon-laptop nav_icon" style="display: inline-block;width: 25px;margin: 0 5px;padding-left: 0;padding-right: 0;text-align: center;"></span>
+					</li>
+					<li class="tablet_code" style="float: left;cursor: pointer;">
+						<span class="icon icon-tablet nav_icon" style="display: inline-block;width: 25px;margin: 0 5px;padding-left: 0;padding-right: 0;text-align: center;"></span>
+					</li>
+					<li class="mobile_code" style="float: left;cursor: pointer;">
+						<span class="icon icon-mobile nav_icon" style="display: inline-block;width: 25px;margin: 0 5px;padding-left: 0;padding-right: 0;text-align: center;"></span>
+					</li>
+				<!-- </div> -->
+				<!-- <div style="margin-right: 20px;display: inline-block;"> -->
+					<li class="generate_code" style="float: left;cursor: pointer;width: 70px;" data-toggle="modal" data-target="#myModal">
+						<span class="icon icon-download-alt nav_icon" style="padding-right: 0;"></span>
+						<span>生成</span>
+					</li>
+					<li class="empty_code " style="float: left;cursor: pointer;width: 70px;">
+						<span class="icon icon-trash nav_icon" style="padding-right: 0;"></span>
+						<span>清空</span>
+					</li>
+				<!-- </div> -->
+				<style>
+.index_top li:hover{color:#66c8d9;background: #fff}
+				</style>
+			</div>
+		</div>
+		<div class="col-md-1 column left row">
+			<!-- 自写nav -->
+			<ul class="col-md-12 left_nav">
+				<li>
+	                <a href="#" class="nav_boss">
+	                	<span class="icon icon-check-empty nav_boss_icon"></span>
+	                    <span class="nav_boss_text">栅格系统<b class="caret"></b></span>
+	                </a>
+	                <ul class="nav_shrink">
+		               	<a href="#" name="" class="nav_shrink_a">
+		               		<li class="nav_shrink_li drag_li">
+		               			<span class=""></span>
+		               			<input type="hidden" class="inp_position" value="0"/>
+								<input type="text" class="inp_num" value="12"/>
+								<i class="icon icon-question-sign" data-toggle="tooltip" data-placement="left" title="在这里设置你的栅格布局, 栅格总数默认为12, 用空格分割每列的栅格值"></i>
+		               		</li>
+		               	</a>
+		               	<a href="#" name="" class="nav_shrink_a">
+		               		<li class="nav_shrink_li drag_li">
+		               			<span class=""></span>
+		               			<input type="hidden" class="inp_position" value="1"/>
+								<input type="text" class="inp_num" value="6 6"/>
+								<i class="icon icon-question-sign" data-toggle="tooltip" data-placement="left" title="在这里设置你的栅格布局, 栅格总数默认为12, 用空格分割每列的栅格值"></i>
+		               		</li>
+		               	</a>
+		               	<a href="#" name="" class="nav_shrink_a">
+		               		<li class="nav_shrink_li drag_li">
+		               			<span class=""></span>
+		               			<input type="hidden" class="inp_position" value="2"/>
+								<input type="text" class="inp_num" value="8 4"/>
+								<i class="icon icon-question-sign" data-toggle="tooltip" data-placement="left" title="在这里设置你的栅格布局, 栅格总数默认为12, 用空格分割每列的栅格值"></i>
+		               		</li>
+		               	</a>
+		               	<a href="#" name="" class="nav_shrink_a">
+		               		<li class="nav_shrink_li drag_li">
+		               			<span class=""></span>
+		               			<input type="hidden" class="inp_position" value="3"/>
+								<input type="text" class="inp_num" value="4 4 4"/>
+								<i class="icon icon-question-sign" data-toggle="tooltip" data-placement="left" title="在这里设置你的栅格布局, 栅格总数默认为12, 用空格分割每列的栅格值"></i>
+		               		</li>
+		               	</a>
+		               	<a href="#" name="" class="nav_shrink_a">
+		               		<li class="nav_shrink_li drag_li">
+		               			<span class=""></span>
+		               			<input type="hidden" class="inp_position" value="4"/>
+								<input type="text" class="inp_num" value="2 6 4"/>
+								<i class="icon icon-question-sign" data-toggle="tooltip" data-placement="left" title="在这里设置你的栅格布局, 栅格总数默认为12, 用空格分割每列的栅格值"></i>
+		               		</li>
+		               	</a>
+		               	<a href="#" name="" class="nav_shrink_a">
+		               		<li class="nav_shrink_li drag_li">
+		               			<span class=""></span>
+		               			<input type="hidden" class="inp_position" value="5"/>
+								<input type="text" class="inp_num" value="2 8 2"/>
+								<i class="icon icon-question-sign" data-toggle="tooltip" data-placement="left" title="在这里设置你的栅格布局, 栅格总数默认为12, 用空格分割每列的栅格值"></i>
+		               		</li>
+		               	</a>
+		               	<a href="#" name="" class="nav_shrink_a">
+		               		<li class="nav_shrink_li drag_li">
+		               			<span class=""></span>
+		               			<input type="hidden" class="inp_position" value="6"/>
+								<input type="text" class="inp_num" value="3 3 3 3"/>
+								<i class="icon icon-question-sign" data-toggle="tooltip" data-placement="left" title="在这里设置你的栅格布局, 栅格总数默认为12, 用空格分割每列的栅格值"></i>
+		               		</li>
+		               	</a>
+	               </ul>
+				</li>
+				
+
+				<style>
+.table td, .table th{line-height: 32px;}
+
+
+
+.btn-droppable-id{display: none;}
+.inp_num{width: 90px;padding: 0 10px;font-size: 10px;line-height: 20px;height: 20px;background: #fff;color: #000;border: 1px solid #cccccc;margin-bottom: 10px;border-radius: 4px;margin: 10px;}
+.drag_li{cursor: move;}
+
+.btn-droppable {
+  cursor: move; /* 为被拖动的按钮更改光标类型 */
+}
+.center{text-align: center;}
+.list-group-item{border: none;background: #f5f5f5}
+.input-control-label-left{margin: 10px 15px;}
+				</style>
+				<li id="multiDroppableContainer">
+	                <a href="#" class="nav_boss">
+	                	<span class="icon icon-book nav_boss_icon"></span>
+	                    <span class="nav_boss_text">基础<b class="caret"></b></span>
+	                </a>
+	                <ul class="nav_shrink">
+	               		<a href="#" name="" class="nav_shrink_a btn-droppable">
+	               			<li class="nav_shrink_li">
+	               				<span class="icon icon-pencil"></span>输入框
+			                    <span class="btn-droppable-id">input</span>
+	               			</li>
+	               		</a>
+	               		<a href="#" name="" class="nav_shrink_a btn-droppable">
+	               			<li class="nav_shrink_li">
+	               				<span class="icon icon-window"></span>下拉框
+			                    <span class="btn-droppable-id">select</span>
+	               			</li>
+	               		</a>
+	               		<a href="#" name="" class="nav_shrink_a btn-droppable">
+	               			<li class="nav_shrink_li">
+	               				<span class="icon icon-window"></span>多选框
+			                    <span class="btn-droppable-id">checkbox</span>
+	               			</li>
+	               		</a>
+	               		<a href="#" name="" class="nav_shrink_a btn-droppable">
+	               			<li class="nav_shrink_li">
+	               				<span class="icon icon-bold"></span>按钮
+			                    <span class="btn-droppable-id">button</span>
+	               			</li>
+	               		</a>
+	               </ul>
+				</li>
+				<!-- <li>
+					                <a href="#" class="nav_boss">
+					                	<span class="icon icon-check-empty nav_boss_icon"></span>
+					                    <span class="nav_boss_text">控件<b class="caret"></b></span>
+					                </a>
+					                <ul class="nav_shrink">
+						               	<a href="#" name="other/Control_Datepicker.html" class="nav_shrink_a"><li class="nav_shrink_li"><span class="icon icon-calendar"></span>日期选择</li></a>
+						               	<a href="#" name="other/Control_sorting.html" class="nav_shrink_a"><li class="nav_shrink_li"><span class="icon icon-sort"></span>拖拽排序</li></a>
+					               </ul>
+				</li>
+				<li>
+					<a href="#" class="nav_boss">
+					                	<span class="icon icon-list-alt nav_boss_icon"></span>
+					                    <span class="nav_boss_text">视图组件<b class="caret"></b></span>
+					                </a>
+					              	<ul class="nav_shrink">
+						               	<a href="#" name="other/view_table.html" class="nav_shrink_a"><li class="nav_shrink_li"><span class="icon icon-table"></span>数据表格</li></a>
+						               	<a href="#" name="other/view_tab.html" class="nav_shrink_a"><li class="nav_shrink_li"><span class="icon icon-credit"></span>标签页</li></a>
+						               	<a href="#" name="other/View_tree_menu.html" class="nav_shrink_a"><li class="nav_shrink_li"><span class="icon icon-th-list"></span>树形菜单</li></a>
+						               	<a href="#" name="other/View_files_upload.html" class="nav_shrink_a"><li class="nav_shrink_li"><span class="icon icon-cloud-upload"></span>文件上传</li></a>
+						               	<a href="#" name="other/View_organization.html" class="nav_shrink_a"><li class="nav_shrink_li"><span class="icon icon-sitemap"></span>组织结构</li></a>
+					               </ul>
+				</li>
+				<li>
+					<a href="#" class="nav_boss">
+					                	<span class="icon icon-file nav_boss_icon"></span>
+					                    <span class="nav_boss_text">引入插件<b class="caret"></b></span>
+					                </a>
+					              	<ul class="nav_shrink">
+						               	<a href="#" name="other/echarts.html" class="nav_shrink_a"><li class="nav_shrink_li"><span class="icon icon-line-chart"></span>可视化图表</li></a>
+						               	<a href="#" name="other/GridManager.html" class="nav_shrink_a"><li class="nav_shrink_li"><span class="icon icon-table"></span>GridManager</li></a>
+					               </ul>
+				</li> -->
+			</ul>
+		</div>
+		
+		<div class="col-md-11 column right row">
+			<div class="black"></div>
+			<div class="col-md-12 fill drag_box">
+				<form action="" class="drag_box_form fill layui-form"></form>
+			</div>
+			<div class="drag_num row">
+				
+			</div>
+		</div>
+	</div>
+	<!-- 对话框 -->
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+					<h4 class="modal-title">生成源码</h4>
+				</div>
+				<div class="modal-body">
+					html：
+					<textarea name="" id="" class="generate_code_box" style="width: 100%;height:200px;"></textarea>
+					js：
+					<textarea name="" id="" class="generate_codejs_box" style="width: 100%;height: 100px;"></textarea>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal_box">
+		
+	</div>
+	<!-- <div class="modal fade" id="property_input1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+					<h4 class="modal-title">input输入框</h4>
+				</div>
+				<div class="modal-body">
+					123
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	
+
+
+
+
+	
+</div>
+</body>
+<script src="zui/js/jquery.min.js"></script>
+<script src="zui/js/layui.js"></script>
+<script src="zui/js/zui.min.js"></script>
+<script src="zui/js/main.js"></script>
+<script src="Zui/lib/prism/prism.js"></script>
+<script src="Zui/lib/prism/jquery.htmlClean.js"></script>
+<script src="Zui/lib/sortable/zui.sortable.min.js"></script>
+<script src="Zui/lib/chosen/chosen.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<style>
+/* 为可拖动的条目应用可移动光标类型 */
+.sortableList > .list-group-item {cursor: move}
+
+/* 为正在被拖动的条目应用半透明外观 */
+.sortableList > .list-group-item.dragging {
+  visibility: visible;
+  opacity: .3;
+}
+	.droppable-target{border: 1px solid #666}
+
+
+	.drag_box{overflow: auto;width: 100%;padding: 1%;padding-bottom: 3%;}
+	.module{float:left;width:100%;border: 1px solid #ccc;background: #f5f5f5;}
+
+
+.inp_position{height:100px;border: 1px solid #ccc;background:#fff;margin-top: 10px;}
+/* .inp_position:hover{border: 1px solid #66c8d9;} */
+
+/* 删除box */
+.delete_box{position:fixed;width: 500%;height: 50px;background: #FF3333;margin:0 auto;bottom: 0;display: none;margin-left: -14px;border: none;opacity: 0.6;line-height: 50px;font-size: 30px;color: #fff;padding-left: 40%}
+.delete_box span{font-size: 30px;}
+
+.manage_group{position: absolute;right: 10px;z-index: 999;display: none;margin-top: 10px;}
+
+.module_group{position: absolute;right: 10px;z-index: 999;display: none;margin-top: 10px;}
+
+
+
+
+
+
+.layui-form-label{float: left;display: inline-block;padding: 0 ;width: 80px;font-weight: 400;text-align: center;line-height: 38px;}
+.layui-form-item{margin-bottom: 0px;}
+
+.layui-input-block{margin-left: 80px}
+
+
+</style>
+<script>
+var ceshiData = [{"id":1,"name":"测试选项A","children":[{"id":2,"name":"A-1","children":[{"id":3,"name":"A-1-1"},{"id":4,"name":"A-1-2"}]},{"id":5,"name":"A-2"}]},{"id":6,"name":"测试选项B"}]
+var tagData = [{"id":1,"name":"选项一","status":0},{"id":2,"name":"选项二"},{"id":3,"name":"选项三"},{"id":4,"name":"选项四"},{"id":5,"name":"选项五"},{"id":6,"name":"选项六"},{"id":7,"name":"选项七"}]; 
+
+	layui.config({
+    base : './'
+  }).extend({
+   	selectN: './layui_extends/selectN',
+    selectM: './layui_extends/selectM',
+  })
+  /*.use(['layer','form','jquery','selectN','selectM'],function(){
+    $ = layui.jquery;	
+    var form = layui.form
+    ,selectN = layui.selectN
+    ,selectM = layui.selectM;
+    //无限级分类-基本配置
+    for (var i = num-1; i < num; i++) {
+		var nums = "catIns"+num
+    	var nums = selectN({
+	      //元素容器【必填】
+	      elem: '#cat_ids'+num
+	      ,search:[false,true]
+	      //候选数据【必填】
+	      ,data: ceshiData
+	    });
+    }
+  });*/
+
+
+
+/*生成代码*/
+$(document).on("click",".generate_code",function(){
+	html = $.htmlClean($(".drag_box").html(), {
+		format: true,
+		allowedAttributes: [
+			["id"],
+			["class"],
+			["placeholder"],
+			["onkeyup"],
+			["onafterpaste"],
+			["onblur"]
+		]
+	});
+	$(".generate_code_box").html(html)
+})
+/*清空代码*/
+$(document).on("click",".empty_code",function(){
+	$(".drag_box_form").html("<form action='' class='drag_box_form fill'></form>");
+	$(".drag_num").html("");
+	$(".generate_codejs_box").html("");
+})
+
+/*改变窗体*/
+$(document).on("click",".desktop_code",function(){
+	$(".drag_box").css("width","100%");
+})
+$(document).on("click",".laptop_code",function(){
+	$(".drag_box").css("width","1024px");
+})
+$(document).on("click",".tablet_code",function(){
+	$(".drag_box").css("width","800px");
+})
+$(document).on("click",".mobile_code",function(){
+	$(".drag_box").css("width","512px");
+})
+
+$('.sortableList').sortable();
+
+
+/*提示窗*/
+$('[data-toggle="tooltip"]').tooltip({
+    placement: 'bottom'
+});
+
+	var inp_position =0;
+	var numbera =0;
+	var list =0;
+	var data=[];
+	$(".drag_li").draggable({
+      appendTo: "body",
+      helper: "clone",
+      drag:function(){
+      	list=$(this).index(".drag_li")
+      	inp_position=$(".drag_li").eq($(this).index(".drag_li")).find(".inp_position").val();
+		numbera=$(".drag_li").eq($(this).index(".drag_li")).find(".inp_num").val();
+      }
+    });
+	$(".btn-droppable").draggable({
+	  appendTo: "body",
+	  helper: "clone",
+	  start:function(){
+	  }
+	});
+
+	$(".drag_box_form").droppable({
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      accept: ":not(.ui-sortable-helper)",
+      drop: function(event,ui) {
+      	if (ui.draggable.find("i").length>0) {
+      		var strs = String($(".inp_num").eq(list).val());
+			var arrays= new Array();
+			arrays = strs.split(" ");
+			var content = 0;
+			for (var i = 0; i < arrays.length; i++) {
+				content= content +Number(arrays[i])
+			}
+			if (content==12) {
+				var html ="";
+				for (var i = 0; i < arrays.length; i++) {
+					html+='<div class="col-md-'+arrays[i]+' column"><div class="inp_position" style=""></div></div>'
+				}
+				$( "<li class='vessel_inp_position' style='float:left;width:100%;' onmouseover='mouseOver(this)' onmouseout='mouseOut(this)'><div class='btn-group manage_group'><button class='btn btn-danger danger_grid'><span class='icon icon-trash'></span> 删除</button></div></li>" ).append(html).appendTo(this);
+			}else{
+				new $.zui.Messager('栅格总数错误', {
+					icon: 'exclamation-sign',
+				    type: 'warning',
+				}).show();
+			}
+      	}else{
+      		if ($(".drag_box_form").find(".inp_position").size()>0) {
+      			var type = ui.draggable.find(".btn-droppable-id").text()
+	      		$(".inp_position").droppable({
+	      			 activeClass: "ui-state-default",
+				      hoverClass: "ui-state-hover",
+				      accept: ":not(.ui-sortable-helper)",
+				      drop:function(event,ui){
+				      	var type = ui.draggable.find(".btn-droppable-id").text()
+				      	var html = "";
+				      	if (type=="input") {
+				      		$(".drag_num").append("<div class='"+type+"_num'></div>")
+				      		var num = $("."+type+"_num").size();
+				      		html+="<div class='input-control has-label-left list-group-item' style='cursor:pointer' data-toggle='modal' data-target='#property_input"+num+"'><input id='"+type+num+"' type='text' class='form-control "+type+num+"' placeholder='请输入' onkeyup='' onblur=''><label for='"+type+num+"' class='input-control-label-left'>用户名:</label></div>"
+
+				      		$( "<div class='module' style='' onmouseover='mouseOver2(this)' onmouseout='mouseOut2(this)'><div class='btn-group module_group'><button class='btn btn-danger danger_module'><span class='icon icon-trash'></span> 删除</button></div></div>" ).append(html).appendTo(this);
+				      		var name = $("#"+type+num+"").parent().find(".input-control-label-left").text();
+				      		var placeholder = $("#"+type+num+"").parent().find("."+type+num+"").attr('placeholder');
+				      		$(".modal_box").append('<div class="modal fade" id="property_input'+num+'"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button><h4 class="modal-title">input输入框</h4></div><div class="modal-body"><table class="table" style="text-align: center;"><tbody><tr><td>标题</td><td><input type="text" value="'+name+'" class="property_input property_input'+num+' form-control"></td></tr><tr><td>提示文字</td><td><input type="text" value="'+placeholder+'" class="property_input_placeholder'+num+' form-control"></td></tr><tr><td>控制文本框</td><td><select name="" class="form-control input_'+num+'_select"><option value="default">默认(初始状态)</option><option value="isCEN">只能输入中文、英文、数字、@符号和.符号</option><option value="isC">只能输入中文</option><option value="isN">只能输入数字</option><option value="isND">只能输入数字、小数点</option></select></td></tr></tbody></table></div><div class="modal-footer"><button type="button" class="btn btn-default input_close" data-dismiss="modal">关闭</button><button type="button" class="btn btn-primary property_input_primary input_primary'+num+'">保存</button></div></div></div></div>');
+
+				      	}else if(type=="button"){
+				      		$(".drag_num").append("<div class='"+type+"_num'></div>")
+				      		var num = $("."+type+"_num").size();
+				      		html+="<div class='list-group-item center' data-toggle='modal' data-target='#property_button"+num+"' style='cursor:pointer'><input class='btn btn-info button_submit "+type+num+"' type='button' value='信息'></div>"
+				      		$( "<div class='module' style='' onmouseover='mouseOver2(this)' onmouseout='mouseOut2(this)'><div class='btn-group module_group'><button class='btn btn-danger danger_module'><span class='icon icon-trash'></span> 删除</button></div></div>").append(html).appendTo(this);
+
+				      		console.log($("."+type+num+"").parent().html())
+				      		var name = $("."+type+num+"").parent().find(".button_submit").val();
+				      		$(".modal_box").append('<div class="modal fade" id="property_button'+num+'"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button><h4 class="modal-title">input按钮</h4></div><div class="modal-body"><table class="table" style="text-align: center;"><tbody><tr><td>显示文本</td><td><input type="text" value="'+name+'" class="property_button property_button'+num+' form-control"></td></tr></tbody></table></div><div class="modal-footer"><button type="button" class="btn btn-default button_close" data-dismiss="modal">关闭</button><button type="button" class="btn btn-primary property_button_primary input_primary'+num+'">保存</button></div></div></div></div>');
+				      	}else if(type=="select"){
+				      		$(".drag_num").append("<div class='"+type+"_num'></div>")
+				      		var num = $("."+type+"_num").size();
+							html+="<div class='list-group-item' data-toggle='modal' data-target='#property_select"+num+"' style='cursor:pointer'><div class='layui-form-item "+type+num+"'><label class='layui-form-label select_submit layui-form-label"+num+"'>多级"+num+"</label><div id='cat_ids"+num+"' class='cat_ids"+num+"'></div></div></div>"
+				      		$( "<div class='module' style='' onmouseover='mouseOver2(this)' onmouseout='mouseOut2(this)'><div class='btn-group module_group'><button class='btn btn-danger danger_module'><span class='icon icon-trash'></span> 删除</button></div></div>").append(html).appendTo(this);
+							layui.use(['layer','form','jquery','selectN','selectM'],function(){
+							    $ = layui.jquery;	
+							    var form = layui.form
+							    ,selectN = layui.selectN
+							    ,selectM = layui.selectM;
+							    //无限级分类-基本配置
+							    for (var i = num-1; i < num; i++) {
+						    		var nums = "catIns"+num
+							    	var nums = selectN({
+								      	//元素容器【必填】
+								      	elem: '#cat_ids'+num
+								      	,search:[false,true]
+								      	//候选数据【必填】
+								      	,data: ceshiData
+								    });
+							    }
+							});
+				      		var name = $("."+type+num+"").parent().find(".layui-form-label"+num+"").text();
+				      		$(".modal_box").append('<div class="modal fade" id="property_select'+num+'"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button><h4 class="modal-title">select自定义下拉框</h4></div><div class="modal-body"><table class="table" style="text-align: center;"><tbody><tr><td>显示文本</td><td><input type="text" value="'+name+'" class="property_select property_select'+num+' form-control"></td></tr><tr><td>下拉选项<br><i class="icon icon-question-sign" data-toggle="tooltip" data-placement="bottom" title="此处格式不要用错，数组内是对象"></i></td><td><textarea class="select_textarea_'+num+'" name="" id="" style="width: 100%;border: 1px solid #ccc;resize:none;border-radius: 4px;line-height: 25px;min-height: 150px;padding: 5px 8px;">'+JSON.stringify(ceshiData)+'</textarea></td></tr></tbody></table></div><div class="modal-footer"><button type="button" class="btn btn-default select_close" data-dismiss="modal">关闭</button><button type="button" class="btn btn-primary property_select_primary input_primary'+num+'">保存</button></div></div></div></div>');
+
+				      	}else if(type=="checkbox"){
+				      		$(".drag_num").append("<div class='"+type+"_num'></div>")
+				      		var num = $("."+type+"_num").size();
+				      		html+="<div class='list-group-item' data-toggle='modal' data-target='#property_checkbox"+num+"' style='cursor:pointer'><div class='layui-form-item "+type+num+"'><label class='layui-form-label checkbox_submit layui-form-label"+num+"'>多选"+num+"<input type='hidden' value='5' class='checkbox_numbers'></label><div class='layui-input-block tag_ids"+num+"' id='tag_ids"+num+"'></div></div></div>"
+				      		$( "<div class='module' style='' onmouseover='mouseOver2(this)' onmouseout='mouseOut2(this)'><div class='btn-group module_group'><button class='btn btn-danger danger_module'><span class='icon icon-trash'></span> 删除</button></div></div>").append(html).appendTo(this);
+
+				      		layui.use(['layer','form','jquery','selectN','selectM'],function(){
+							    $ = layui.jquery;	
+							    var form = layui.form
+							    ,selectN = layui.selectN
+							    ,selectM = layui.selectM;
+
+							    //多选标签-基本配置
+							    for (var i = num-1; i < num; i++) {
+							    	var nums = "tagIns"+num
+						      		var nums = selectM({
+									    //元素容器【必填】
+									    elem: '#tag_ids'+num
+									    //候选数据【必填】
+									    ,data: tagData
+									    ,max:5 			//最多选中个数，默认5
+									    ,field: {idName:'id',titleName:'name'}
+									    /*,width:400*/
+									    //添加验证
+									    ,verify:'required'
+									});
+					      		}
+							});
+
+				      		var name = $("."+type+num+"").parent().find(".layui-form-label"+num+"").text();
+				      		var numbers = $("."+type+num+"").parent().find(".checkbox_numbers").val();
+				      		$(".modal_box").append('<div class="modal fade" id="property_checkbox'+num+'"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button><h4 class="modal-title">checkbox自定义下拉框</h4></div><div class="modal-body"><table class="table" style="text-align: center;"><tbody><tr><td>显示文本</td><td><input type="text" value="'+name+'" class="property_checkbox property_checkbox'+num+' form-control"></td></tr><tr><td>可选数量</td><td><input type="text" value="'+numbers+'" class="modal_checkbox_numbers form-control"></td></tr><tr><td>下拉选项<br><i class="icon icon-question-sign" data-toggle="tooltip" data-placement="bottom" title="此处格式不要用错，数组内是对象"></i></td><td><textarea class="checkbox_textarea_'+num+'" name="" id="" style="width: 100%;border: 1px solid #ccc;resize:none;border-radius: 4px;line-height: 25px;min-height: 150px;padding: 5px 8px;">'+JSON.stringify(tagData)+'</textarea></td></tr></tbody></table></div><div class="modal-footer"><button type="button" class="btn btn-default checkbox_close" data-dismiss="modal">关闭</button><button type="button" class="btn btn-primary property_checkbox_primary input_primary'+num+'">保存</button></div></div></div></div>');
+
+	      				}else{
+				      		html+=""
+				      	}
+				      /*	html+="<div>123</div>"*/
+				      	
+				      /*	后面div*/
+				      	var size = $(this).parent().find(".module").size()
+				      	var height = 0;
+				      	for (var i = 0; i < size; i++) {
+				      		height += Number($(this).parent().find(".module").eq(i).height());
+				      	}
+				      	height +=20;
+				      	$(this).parent().find(".inp_position").attr("style","height:"+height+"px;")
+				      }
+	      		}).sortable({
+	      			items: ".module:not(.inp_position)",
+	      			 	sort: function() {
+				        // 获取由 droppable 与 sortable 交互而加入的条目
+				        // 使用 connectWithSortable 可以解决这个问题，但不允许您自定义 active/hoverClass 选项
+				        $( this ).removeClass( "ui-state-default" );
+				    }
+	      		})
+      		}else{
+      			new $.zui.Messager('请先放栅格系统里的布局！', {
+					icon: 'exclamation-sign',
+				    type: 'warning',
+				}).show();
+      		}
+
+
+      		
+      	}
+
+			
+		}
+    }).sortable({
+      items: "li:not(.drag_box)",
+      sort: function() {
+        // 获取由 droppable 与 sortable 交互而加入的条目
+        // 使用 connectWithSortable 可以解决这个问题，但不允许您自定义 active/hoverClass 选项
+        $( this ).removeClass( "ui-state-default" );
+      }
+    });
+/*显示隐藏管理小组,并移除*/
+function mouseOver(t){
+	$(t).find(".manage_group").show();
+}
+function mouseOut(t){
+	$(t).find(".manage_group").hide();
+}
+$(document).on("click",".danger_grid",function(){
+	$(".danger_grid").eq($(this).index(".danger_grid")).parent().parent().remove()
+})
+
+
+
+function mouseOver2(t){
+	$(t).find(".module_group").show();
+}
+function mouseOut2(t){
+	$(t).find(".module_group").hide();
+}
+$(document).on("click",".danger_module",function(){
+	$(".danger_module").eq($(this).index(".danger_module")).parent().parent().remove()
+})
+
+
+$(document).on("click",".property_input_primary",function(){
+	var num = $(this).index(".property_input_primary")+1;
+	var text = $(this).parent().parent().find(".property_input"+num+"").val()
+	$("#input"+num+"").parent().find(".input-control-label-left").text(text);
+	var placeholder = $(this).parent().parent().find(".property_input_placeholder"+num+"").val()
+	$("#input"+num+"").parent().find("#input"+num+"").attr("placeholder",placeholder)
+	var width = $("#input"+num+"").parent().find(".input-control-label-left").width()
+	$("#input"+num+"").parent().find("#input"+num+"").attr("style","padding-left:"+Number(width+16)+"px")
+	var isNum = $(this).parent().parent().find(".input_"+num+"_select").val();
+	if (isNum=="default") {
+		$("#input"+num+"").parent().find("#input"+num+"").attr("onkeyup","")
+		$("#input"+num+"").parent().find("#input"+num+"").attr("onafterpaste","")
+		$("#input"+num+"").parent().find("#input"+num+"").attr("onblur","")
+	}else if (isNum=="isCEN") {
+		$("#input"+num+"").parent().find("#input"+num+"").attr("onkeyup","value=value.replace(/[^\\a-\\z\\A-\\Z0-9\\u4E00-\\u9FA5\\@\\.]/g,'')")
+	}else if (isNum=="isC") {
+		$("#input"+num+"").parent().find("#input"+num+"").attr("onkeyup","value=value.replace(/[^\\u4E00-\\u9FA5]/g,'')")
+		$("#input"+num+"").parent().find("#input"+num+"").attr("onbeforepaste","clipboardData.setData('text',clipboardData.getData('text').replace(/[^\\u4E00-\\u9FA5]/g,''))")
+		$("#input"+num+"").parent().find("#input"+num+"").attr("onblur","")
+	}else if (isNum=="isN") {
+		$("#input"+num+"").parent().find("#input"+num+"").attr("onkeyup","this.value=this.value.replace(/\\D/g,'')")
+		$("#input"+num+"").parent().find("#input"+num+"").attr("onafterpaste","this.value=this.value.replace(/\\D/g,'')")
+	}else if (isNum=="isND") {
+		$("#input"+num+"").parent().find("#input"+num+"").attr("onkeyup","value=value.replace(/[^\\d\\.]/g,'')")
+	}
+	$(this).parent().parent().find(".input_close").click();
+})
+
+$(document).on("click",".property_button_primary",function(){
+	var num = $(this).index(".property_button_primary")+1;
+	var text = $(this).parent().parent().find(".property_button"+num+"").val()
+
+	$(".button"+num+"").parent().find(".button_submit").val(text);
+
+	$(this).parent().parent().find(".button_close").click();
+
+})
+
+$(document).on("click",".property_select_primary",function(){
+	var num = $(this).index(".property_select_primary")+1;
+	var text = $(this).parent().parent().find(".property_select"+num+"").val();
+	/*$(".select"+num+"").parent().parent().find(".layui-form-label"+num+"").val(text);*/
+	var name = $(".select"+num+"").parent().find(".layui-form-label"+num+"").text(text);
+
+	var textarea = $(this).parent().parent().find(".select_textarea_"+num+"").val()
+  	var ceshiData = JSON.parse(textarea);
+	layui.use(['layer','form','jquery','selectN','selectM'],function(){
+    	$ = layui.jquery;	
+    	var form = layui.form
+    	,selectN = layui.selectN
+    	,selectM = layui.selectM;
+    	//无限级分类-基本配置
+    	for (var i = num-1; i < num; i++) {
+			var nums = "catIns"+num
+    		var nums = selectN({
+	      		//元素容器【必填】
+	      		elem: '#cat_ids'+num
+	      		,search:[false,true]
+	      		//候选数据【必填】
+	      		,data: ceshiData
+	    	});
+    	}
+  	});
+
+	$(".generate_codejs_box").append("var texteara_cat"+num +"="+ textarea+";");
+	$(this).parent().parent().find(".select_close").click();
+})
+
+$(document).on("click",".property_checkbox_primary",function(){
+	var num = $(this).index(".property_checkbox_primary")+1;
+	var text = $(this).parent().parent().find(".property_checkbox"+num+"").val();
+	/*$(".checkbox"+num+"").parent().parent().find(".layui-form-label"+num+"").val(text);*/
+	var name = $(".checkbox"+num+"").parent().find(".layui-form-label"+num+"").text(text);
+	var numbers = $(this).parent().parent().find(".modal_checkbox_numbers").val();
+	var textarea = $(this).parent().parent().find(".checkbox_textarea_"+num+"").val()
+  	var tagData = JSON.parse(textarea);
+	layui.use(['layer','form','jquery','selectN','selectM'],function(){
+    	$ = layui.jquery;	
+    	var form = layui.form
+    	,selectN = layui.selectN
+    	,selectM = layui.selectM;
+    	//多选标签-基本配置
+	    for (var i = num-1; i < num; i++) {
+	    	var nums = "tagIns"+num
+      		var nums = selectM({
+			    //元素容器【必填】
+			    elem: '#tag_ids'+num
+			    //候选数据【必填】
+			    ,data: tagData
+			    ,max:numbers			//最多选中个数，默认5
+			    ,field: {idName:'id',titleName:'name'}
+			    /*,width:400*/
+			    //添加验证
+			    ,verify:'required'
+			});
+  		}
+  	});
+
+	$(".generate_codejs_box").append("var texteara_tag"+num +"="+ textarea+";");
+	$(this).parent().parent().find(".checkbox_close").click();
+})
+
+
+
+</script>
+</html>
